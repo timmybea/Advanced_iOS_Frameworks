@@ -23,6 +23,8 @@ class SecondViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+
+        
         view.backgroundColor = UIColor.darkGray
         
         setupSubviews()
@@ -46,8 +48,6 @@ class SecondViewController: UIViewController {
         view.addSubview(backButton)
         backButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
         backButton.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 100).isActive = true
-        
-        
         
     }
     

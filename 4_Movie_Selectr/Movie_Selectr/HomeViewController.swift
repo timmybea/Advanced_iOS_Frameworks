@@ -27,6 +27,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return view
     }()
     
+    let movieTransitionDelegate = MovieTransitionDelegate()
+    
     var movieData = [Movie]()
     let cellID = "cellID"
     
@@ -64,33 +66,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         collectionView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
-    
-    //MARK: tableView delegate methods
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return movieData.count
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var cell = tableView.dequeueReusableCell(withIdentifier: cellID)!
-//        cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellID)
-//        
-//        let movie = movieData[indexPath.row]
-//        cell.textLabel?.text = movie.title
-//        cell.detailTextLabel?.text = movie.description
-//        
-//        Movie.getImageData(forCell: cell, withMovieObject: movie)
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 70
-//    }
 
+
+    
+    //MARK: Collection View delegate methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -116,5 +95,25 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         return CGSize(width: 150, height: 150)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        showOverlayFor(indexPath: indexPath)
+    
+    }
+    
+    
+    //MARK: transition animation method
+    
+    func showOverlayFor(indexPath: IndexPath) {
+        let overlayVC = OverlayViewController()
+        
+        //set the movie object in the overlayVC
+        
+        self.transitioningDelegate = movieTransitionDelegate
+        overlayVC.transitioningDelegate = movieTransitionDelegate
+        overlayVC.modalPresentationStyle = .custom
+
+        self.present(overlayVC, animated: true, completion: nil)
+    }
 }
 

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B029A2AB1E8189B100500C95 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = B029A2AA1E8189B100500C95 /* Movie.swift */; };
 		B037AF901F64B7C8007A2D76 /* MovieCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B037AF8F1F64B7C8007A2D76 /* MovieCellCollectionViewCell.swift */; };
+		B07A559B1F65C1E0004BD772 /* MoviePresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07A559A1F65C1E0004BD772 /* MoviePresentationController.swift */; };
+		B07A559D1F65CE5B004BD772 /* MovieTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07A559C1F65CE5B004BD772 /* MovieTransitioner.swift */; };
+		B07A559F1F65D67D004BD772 /* OverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07A559E1F65D67D004BD772 /* OverlayViewController.swift */; };
 		B0CC0D081E6F3821006E3D36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC0D071E6F3821006E3D36 /* AppDelegate.swift */; };
 		B0CC0D0A1E6F3821006E3D36 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0CC0D091E6F3821006E3D36 /* HomeViewController.swift */; };
 		B0CC0D0F1E6F3821006E3D36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0CC0D0E1E6F3821006E3D36 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* Begin PBXFileReference section */
 		B029A2AA1E8189B100500C95 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Movie.swift; path = Movie_Selectr/Movie.swift; sourceTree = "<group>"; };
 		B037AF8F1F64B7C8007A2D76 /* MovieCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCellCollectionViewCell.swift; sourceTree = "<group>"; };
+		B07A559A1F65C1E0004BD772 /* MoviePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePresentationController.swift; sourceTree = "<group>"; };
+		B07A559C1F65CE5B004BD772 /* MovieTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieTransitioner.swift; sourceTree = "<group>"; };
+		B07A559E1F65D67D004BD772 /* OverlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayViewController.swift; sourceTree = "<group>"; };
 		B0CC0D041E6F3821006E3D36 /* Movie_Selectr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie_Selectr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CC0D071E6F3821006E3D36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Movie_Selectr/AppDelegate.swift; sourceTree = "<group>"; };
 		B0CC0D091E6F3821006E3D36 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Movie_Selectr/HomeViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 			isa = PBXGroup;
 			children = (
 				B0CC0D091E6F3821006E3D36 /* HomeViewController.swift */,
+				B07A559E1F65D67D004BD772 /* OverlayViewController.swift */,
+				B07A559A1F65C1E0004BD772 /* MoviePresentationController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -90,6 +98,7 @@
 			children = (
 				B0CC0D071E6F3821006E3D36 /* AppDelegate.swift */,
 				B029A2AA1E8189B100500C95 /* Movie.swift */,
+				B07A559C1F65CE5B004BD772 /* MovieTransitioner.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -176,8 +185,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0CC0D0A1E6F3821006E3D36 /* HomeViewController.swift in Sources */,
+				B07A559B1F65C1E0004BD772 /* MoviePresentationController.swift in Sources */,
+				B07A559F1F65D67D004BD772 /* OverlayViewController.swift in Sources */,
 				B037AF901F64B7C8007A2D76 /* MovieCellCollectionViewCell.swift in Sources */,
 				B0CC0D081E6F3821006E3D36 /* AppDelegate.swift in Sources */,
+				B07A559D1F65CE5B004BD772 /* MovieTransitioner.swift in Sources */,
 				B029A2AB1E8189B100500C95 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
