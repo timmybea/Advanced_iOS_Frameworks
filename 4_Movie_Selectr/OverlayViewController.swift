@@ -9,7 +9,6 @@
 import UIKit
 
 class OverlayViewController: UIViewController {
-
     
     lazy var closeButton: UIButton = {
         let button = UIButton()

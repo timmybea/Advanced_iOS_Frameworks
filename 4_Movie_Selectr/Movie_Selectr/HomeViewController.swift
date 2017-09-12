@@ -105,7 +105,7 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
     //MARK: transition animation method
     
     func showOverlayFor(indexPath: IndexPath) {
-        let overlayVC = OverlayViewController()
+        let overlayVC = OverlayViewController() //presentedVC
         
         //set the movie object in the overlayVC
         
