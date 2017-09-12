@@ -37,7 +37,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         
         self.title = "Now Playing"
         
-        view.backgroundColor = UIColor.cyan
+        view.backgroundColor = UIColor.lightGray
+        
         setupViews()
         
         getMovieData()
@@ -108,6 +109,8 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let overlayVC = OverlayViewController() //presentedVC
         
         //set the movie object in the overlayVC
+        let currentMovie = movieData[indexPath.row]
+        overlayVC.movie = currentMovie
         
         self.transitioningDelegate = movieTransitionDelegate
         overlayVC.transitioningDelegate = movieTransitionDelegate
