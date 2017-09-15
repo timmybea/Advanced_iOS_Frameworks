@@ -122,7 +122,58 @@ public struct Movie {
             }
         }
     }
- 
+    
+    public static func getImageData(for movie: Movie) -> Data? {
+        
+        if let imagePath = checkForImageData(withMovieObject: movie) {
+            
+            if let imageData = FileManager.default.contents(atPath: imagePath) {
+                return imageData
+            } else {
+                return nil
+            }
+            
+        } else {
+            var result: Data?
+            
+            self.downloadImageData(for: movie, completion: { (success, data) in
+                if success {
+                    result = data
+                } else {
+                    result = nil
+                }
+            })
+            return result
+        }
+    }
+    
+    
+    private static func downloadImageData(for movie: Movie, completion: @escaping (_ success: Bool, _ data: Data?) -> ()) {
+        
+        //download image data and store in the cache
+        let imagePath = imageBaseURL + movie.imageRef
+        let imageURL = URL(string: imagePath)
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
+            
+            do {
+                let data = try Data(contentsOf: imageURL!)
+                
+                if let documents = getDocumentsDirectory() {
+                    let imagePath = documents + "/\(movie.title)"
+                    let escapedImagePath = imagePath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                    
+                    if FileManager.default.createFile(atPath: escapedImagePath!, contents: data, attributes: nil) {
+                        print("image saved")
+                    }
+                }
+                completion(true, data)
+            } catch {
+                print("No data at specified location")
+                completion(false, nil)
+            }
+        }
+    }
 
     private static func updateCell(_ cell: AnyObject, with imageData: Data) {
         if cell is UITableViewCell {

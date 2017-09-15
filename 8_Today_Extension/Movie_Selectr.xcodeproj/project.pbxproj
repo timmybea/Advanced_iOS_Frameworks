@@ -97,6 +97,7 @@
 		B000ED701F69F25E00AAB8D1 /* BridgingHeaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BridgingHeaderTests.swift; sourceTree = "<group>"; };
 		B000ED721F69F25E00AAB8D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B000ED811F69F43800AAB8D1 /* Notes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Notes; sourceTree = "<group>"; };
+		B000ED831F6B43BD00AAB8D1 /* Movie_Selectr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Movie_Selectr.entitlements; sourceTree = "<group>"; };
 		B029A2AA1E8189B100500C95 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Movie.swift; path = Movie_Selectr/Movie.swift; sourceTree = "<group>"; };
 		B037AF8F1F64B7C8007A2D76 /* MovieCellCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		B07A559A1F65C1E0004BD772 /* MoviePresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviePresentationController.swift; sourceTree = "<group>"; };
@@ -208,6 +209,7 @@
 		B0CC0D061E6F3821006E3D36 /* Movie_Selectr */ = {
 			isa = PBXGroup;
 			children = (
+				B000ED831F6B43BD00AAB8D1 /* Movie_Selectr.entitlements */,
 				B0CC0D1C1E6F3832006E3D36 /* Helpers */,
 				B0CC0D1B1E6F3830006E3D36 /* Model */,
 				B0CC0D1A1E6F382F006E3D36 /* View */,
@@ -377,6 +379,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 2733C6P24Y;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -552,6 +559,7 @@
 		B000ED791F69F25E00AAB8D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -576,6 +584,7 @@
 		B000ED7A1F69F25E00AAB8D1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;

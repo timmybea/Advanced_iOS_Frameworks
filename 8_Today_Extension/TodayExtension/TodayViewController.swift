@@ -16,21 +16,21 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         let tableview = UITableView()
         tableview.translatesAutoresizingMaskIntoConstraints = false
         tableview.separatorStyle = .none
+        tableview.allowsSelection = false
         tableview.delegate = self
         tableview.dataSource = self
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableview
     }()
     
+    var compactMode = true
+    
+    var nowPlaying = [Movie]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupSubviews()
-    }
-    
-    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Void) {
-        
-        
     }
     
     
@@ -43,6 +43,36 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
         
     }
+    
+    func loadData() {
+        
+        Movie.nowPlaying { (success, movies) in
+            
+            self.nowPlaying = movies!
+            
+            DispatchQueue.main.sync {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func widgetPerformUpdate(completionHandler: @escaping (NCUpdateResult) -> Swift.Void) {
+
+        loadData()
+        completionHandler(.newData)
+    }
+    
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        
+        if activeDisplayMode == .compact {
+            self.compactMode = true
+            self.preferredContentSize = CGSize(width: 0, height: 120)
+        } else {
+            self.compactMode = false
+            self.preferredContentSize = CGSize(width: 0, height: 220)
+        }
+        tableView.reloadData()
+    }
 }
 
 extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
@@ -52,12 +82,26 @@ extension TodayViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if compactMode {
+            return 2
+        } else {
+            return 4
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "Hello \(indexPath.row)"
+        
+        if nowPlaying.count > 0 {
+            let movie = nowPlaying[indexPath.row]
+            
+            cell.textLabel?.font = UIFont.systemFont(ofSize: 18)
+            cell.textLabel?.textColor = UIColor.white
+            cell.textLabel?.text = movie.title
+        
+            Movie.getImageData(forCell: cell, withMovieObject: movie)
+        }
+        
         return cell
     }
     

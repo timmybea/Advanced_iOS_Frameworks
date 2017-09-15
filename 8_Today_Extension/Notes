@@ -15,3 +15,12 @@ Common errors to watch out for:
 Deployment targets need to be the same for all of the targets. You can do this by clicking on the project file and selecting the different targets at the left of the screen and then changing any deployment targets that are not what you want.
 
 You need to makee sure that you define your classes as public if you want them to be seen from the bridging header.
+
+
+You may get this error:
+ld: warning: linking against a dylib which is not safe for use in application extensions: /Users/timbeals/Library/Developer/Xcode/DerivedData/Movie_Selectr-gcxhwaimueueqlcqedgvpgaqcipi/Build/Products/Debug-iphonesimulator/BridgingHeader.framework/BridgingHeader
+
+
+In which case, go to the project file:
+
+bridging header > Deployment info: App extensions - allow app extensions API only (CHECK THIS BOX)
